@@ -11,7 +11,7 @@ $receiver[0]->amount = $objUser->balance;
 $receiver[0]->email = $objUser->paypal_account;
 $receiverList = new ReceiverList($receiver);
 $payRequest->receiverList = $receiverList; 			
-$payRequest->senderEmail = PAYPAL_BUSINESS_ACCOUNT;	//'payment@youdrone.com'; //
+$payRequest->senderEmail = PAYPAL_BUSINESS_ACCOUNT;	//'payment@domain.com'; //
 
 $requestEnvelope = new RequestEnvelope("en_US");
 $payRequest->requestEnvelope = $requestEnvelope; 
@@ -19,7 +19,7 @@ $payRequest->actionType = "PAY";
 $payRequest->cancelUrl = SITE_URL . 'paynow.php?' . $sessUserId;
 $payRequest->returnUrl = SITE_URL . 'paypal/confirm';
 $payRequest->currencyCode = "USD";
-$payRequest->ipnNotificationUrl = SITE_URL . 'withdraw/ipn'; // 'http://paypal.andry.ultrahook.com/withdraw/ipn'; //SITE_URL . 'withdraw/ipn';
+$payRequest->ipnNotificationUrl = SITE_URL . 'withdraw/ipn'; // 'http://paypal.domainhook.com/withdraw/ipn'; //SITE_URL . 'withdraw/ipn';
 
 $sdkConfig = array(
 	"mode" => PAYPAL_SANDBOX ? "sandbox" : 'live',

@@ -4,11 +4,11 @@ require_once(__DIR__."/../../includes/config.php");
 
 $payKey = isset($_REQUEST['pay_key']) ? $_REQUEST['pay_key'] : '';
 
-$objWithdrawal = \YouDrone\Models\Withdrawal::where('payKey', '=', $payKey)->first();
+$objWithdrawal = \Models\Withdrawal::where('payKey', '=', $payKey)->first();
 
 if($objWithdrawal == null) exit();
 
-$objUser = \YouDrone\Models\User::find($objWithdrawal->user_id);
+$objUser = \Models\User::find($objWithdrawal->user_id);
 if($_REQUEST['status'] == 'COMPLETED') {
 	$objWithdrawal->status = 1;
 	$objWithdrawal->save();
